@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  {% for trace in trace_obj %}
+    <div class = "RequestType">
+      <a href = "{}% url 'details' trace.id %}">
+        <h3>{{trace.Request_Type|capfirst }}</h3>
+      </a>
+      {% if trace.Path %}
+        <p> Path: {{ trace.Path }}</p>
+      {% endif %}
+      {% if trace.Pin %}
+        <p> Pin: {{ trace.Pin }}</p>
+      {% endif %}
+      {% if trace.Prog %}
+        <p> Prog: {{ trace.Prog }}</p>
+      {% endif %}
+      {% if trace.Open_Id %}
+        <p> Open_Id: {{ trace.Open_Id }}</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

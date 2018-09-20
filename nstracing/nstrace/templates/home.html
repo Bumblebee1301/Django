@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+{% load widget_tweaks %}
+<form method="get">
+   <div class="well">
+     <h4 style="margin-top: 0">Filter</h4>
+     <div class="row">
+       <div class="form-group col-sm-4 col-md-3">
+         {{ filter.form.Request_Type.label_tag }}
+         {% render_field filter.form.Request_Type class="form-control" %}
+       </div>
+       <div class="form-group col-sm-4 col-md-3">
+         {{ filter.form.Path.label_tag }}
+         {% render_field filter.form.Path class="form-control" %}
+       </div>
+       <div class="form-group col-sm-4 col-md-3">
+         {{ filter.form.Pin.label_tag }}
+         {% render_field filter.form.Pin class="form-control" %}
+       </div>
+       <div class="form-group col-sm-4 col-md-3">
+         {{ filter.form.Prog.label_tag }}
+         {% render_field filter.form.Prog class="form-control" %}
+       </div>
+     </div>
+     <button type="submit" class="btn btn-primary">
+       <span class="glyphicon glyphicon-search"></span> Search
+     </button>
+   </div>
+ </form>
+
+ <table class="table table-bordered">
+   <thead>
+     <tr>
+       <th>Request Type</th>
+       <th>Path</th>
+       <th>Pin</th>
+       <th>Prog</th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for user in filter.qs %}
+       <tr>
+         <td>{{ user.Request_Type }}</td>
+         <td>{{ user.Path }}</td>
+         <td>{{ user.Pin }}</td>
+         <td>{{ user.Prog }}</td>
+       </tr>
+     {% empty %}
+       <tr>
+         <td colspan="5">No data</td>
+       </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+{% endblock %}
